@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The $1 AI Prompt Pack — Pay with ETH</title>
+  <meta name="description" content="Get 25 battle-tested AI prompts + 4 bonus assets for just $1 in ETH." />
+  <style>
+    :root { --bg:#0b1020; --card:#121a30; --txt:#e8edf7; --muted:#93a0bd; --accent:#5b8cff; --ok:#28d18a; --line:#243150; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:radial-gradient(1200px 600px at 50% -10%,#16224a,var(--bg)); color:var(--txt); min-height:100vh; }
+    .wrap { max-width:640px; margin:0 auto; padding:32px 18px 48px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:30px 26px; box-shadow:0 20px 60px rgba(0,0,0,.35); }
+    .badge { display:inline-block; background:rgba(91,140,255,.15); color:var(--accent); font-size:12px; font-weight:700; padding:5px 12px; border-radius:999px; letter-spacing:.4px; }
+    h1 { font-size:28px; line-height:1.2; margin:14px 0 6px; }
+    .sub { color:var(--muted); margin:0 0 18px; font-size:15px; }
+    .price { display:flex; align-items:baseline; gap:12px; margin:6px 0 18px; }
+    .price .amt { font-size:42px; font-weight:800; }
+    .price .old { color:var(--muted); text-decoration:line-through; font-size:18px; }
+    .price .sub2 { color:var(--muted); font-size:13px; align-self:center; }
+    ul.benefits { list-style:none; padding:0; margin:0 0 22px; }
+    ul.benefits li { padding:8px 0 8px 26px; position:relative; color:#d7e0f2; font-size:14.5px; border-bottom:1px solid rgba(255,255,255,.04); }
+    ul.benefits li:before { content:"✓"; position:absolute; left:0; top:8px; color:var(--ok); font-weight:800; }
+    .pay { background:#0e1730; border:1px solid var(--line); border-radius:14px; padding:18px; }
+    .pay h3 { margin:0 0 10px; font-size:15px; color:#cdd8f0; }
+    .addrbox { display:flex; gap:10px; align-items:center; }
+    .addr { flex:1; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; background:#0a1126; border:1px solid var(--line); border-radius:10px; padding:11px 12px; word-break:break-all; color:#aebfe6; }
+    .copy { background:var(--accent); color:#fff; border:0; border-radius:10px; padding:11px 14px; font-weight:700; cursor:pointer; font-size:13px; white-space:nowrap; }
+    .copy:active { transform:scale(.97); }
+    .qr { text-align:center; margin:16px 0 6px; }
+    .qr img { width:160px; height:160px; border-radius:12px; background:#fff; padding:8px; }
+    .hint { color:var(--muted); font-size:12.5px; text-align:center; margin:4px 0 0; }
+    .status { margin-top:18px; padding:14px 16px; border-radius:12px; text-align:center; font-weight:700; font-size:15px; background:rgba(91,140,255,.10); color:#bcd0ff; border:1px solid rgba(91,140,255,.25); }
+    .status.ok { background:rgba(40,209,138,.14); color:#9af3c9; border-color:rgba(40,209,138,.4); }
+    .cta { display:block; text-align:center; background:linear-gradient(180deg,#5b8cff,#3f6fe0); color:#fff; text-decoration:none; font-weight:800; font-size:16px; padding:15px; border-radius:12px; margin-top:18px; }
+    .download { display:block; text-align:center; margin-top:12px; color:var(--accent); font-size:13.5px; text-decoration:underline; }
+    .trust { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:18px; color:var(--muted); font-size:12.5px; }
+    footer { text-align:center; color:var(--muted); font-size:12px; margin-top:22px; }
+    @media (max-width:480px){ h1{font-size:24px;} .price .amt{font-size:36px;} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <span class="badge">Limited Launch · $1 Only</span>
+      <h1>Get our AI Prompt Pack + bonus assets for $1</h1>
+      <p class="sub">25 high-leverage prompts for ChatGPT/Claude/Gemini + 4 bonus assets. Instant download. Pay in ETH.</p>
+
+      <div class="price">
+        <span class="amt">$1</span>
+        <span class="old">$19</span>
+        <span class="sub2">one-time · lifetime access</span>
+      </div>
+
+      <ul class="benefits">
+        <li>25 battle-tested prompts for writing, marketing, coding & research</li>
+        <li>Bonus: resume + cover-letter templates, Python tools, 12 stock images</li>
+        <li>Instant digital delivery — no waiting</li>
+        <li>Works in any LLM today, zero setup</li>
+        <li>Backed by a 100% satisfaction guarantee</li>
+      </ul>
+
+      <div class="pay">
+        <h3>Pay with Ethereum (ETH)</h3>
+        <div class="addrbox">
+          <div class="addr" id="addr">0x6DC71aBB084f6272c34Cc37d59f5bF79826aB24d</div>
+          <button class="copy" onclick="copyAddr()">Copy</button>
+        </div>
+        <div class="qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ethereum%3A0x6DC71aBB084f6272c34Cc37d59f5bF79826aB24d%3Famount%3D0.00052" alt="ETH QR" />
+        </div>
+        <p class="hint">Send <strong>≈ 0.00052 ETH</strong> (any amount ≥ $1 qualifies). Payment is verified on-chain automatically.</p>
+      </div>
+
+      <div class="status" id="status">⏳ Awaiting payment…</div>
+
+      <a class="cta" href="products/ai-prompt-pack.md" download>Download the AI Prompt Pack</a>
+      <a class="download" href="products/ai-prompt-pack.md">View full pack in browser →</a>
+
+      <div class="trust">
+        <span>🔒 On-chain verified</span>
+        <span>⚡ Instant delivery</span>
+        <span>💸 100% guarantee</span>
+      </div>
+    </div>
+    <footer>© <span id="year"></span> AI Prompt Pack. All rights reserved.</footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function copyAddr(){
+      const a = document.getElementById('addr').textContent.trim();
+      navigator.clipboard.writeText(a);
+      const b = document.querySelector('.copy');
+      b.textContent = 'Copied!';
+      setTimeout(()=>b.textContent='Copy', 1400);
+    }
+    async function check(){
+      try {
+        const r = await fetch('status.json?t='+Date.now());
+        const s = await r.json();
+        const el = document.getElementById('status');
+        if (s.received){
+          el.className = 'status ok';
+          el.innerHTML = '✅ Payment received! ' + (s.amount_eth? s.amount_eth+' ETH':'') + (s.txhash? '<br><span style="font-size:11px;color:#7fe3b6">'+s.txhash+'</span>':'');
+        } else {
+          el.className = 'status';
+          el.textContent = '⏳ Awaiting payment… (last checked ' + (s.last_checked||'…') + ')';
+        }
+      } catch(e){}
+    }
+    check();
+    setInterval(check, 8000);
+  </script>
+</body>
+</html>
