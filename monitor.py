@@ -69,15 +69,23 @@ def write_status(data):
     sync_status(data)
 
 _last_pushed = ""
+_last_push_ts = 0.0
+PUSH_INTERVAL = 600  # seconds; GitHub Pages CDN already lags ~10 min, so a
+                     # 10-min heartbeat is plenty without commit spam.
 
 def sync_status(data):
     """Push status.json to the GitHub Pages repo so the public page reflects
-    live state. Only commits when content changed (no commit spam)."""
-    global _last_pushed
+    live state. Pushes only when the payment state flips OR every 10 min
+    (the timestamp changes each cycle, but we don't need to push that often)."""
+    global _last_pushed, _last_push_ts
     payload = json.dumps(data, sort_keys=True)
-    if payload == _last_pushed:
+    now = time.time()
+    material_change = (payload != _last_pushed)
+    heartbeat_due = (now - _last_push_ts) >= PUSH_INTERVAL
+    if not (material_change or heartbeat_due):
         return
     _last_pushed = payload
+    _last_push_ts = now
     try:
         env = dict(os.environ)
         subprocess.run(["git", "-C", REPO_DIR, "add", "status.json"],
