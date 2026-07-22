@@ -11,12 +11,13 @@ Strategy (rate-limit resilient, no API key required):
 Writes storefront/status.json which the landing page polls.
 Exits 0 the moment a qualifying payment (>= $0.90) is detected.
 """
-import json, time, urllib.request, urllib.error, os, sys
+import json, time, urllib.request, urllib.error, os, sys, subprocess
 
 OUR_ADDRESS = "0x6DC71aBB084f6272c34Cc37d59f5bF79826aB24d"
 OUR_LOWER   = OUR_ADDRESS.lower()
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATUS_FILE = os.path.join(HERE, "status.json")
+REPO_DIR = HERE  # this folder IS the github-pages repo (dollar-storefront)
 
 BLOCKCYPHER = "https://api.blockcypher.com/v1/eth/main/addrs/%s/balance" % OUR_ADDRESS
 COINGECKO   = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
@@ -63,8 +64,33 @@ def find_txhash():
 def write_status(data):
     tmp = STATUS_FILE + ".tmp"
     with open(tmp, "w") as f:
-        json.dump(data, f)
+        json.dump(data, f, indent=2)
     os.replace(tmp, STATUS_FILE)
+    sync_status(data)
+
+_last_pushed = ""
+
+def sync_status(data):
+    """Push status.json to the GitHub Pages repo so the public page reflects
+    live state. Only commits when content changed (no commit spam)."""
+    global _last_pushed
+    payload = json.dumps(data, sort_keys=True)
+    if payload == _last_pushed:
+        return
+    _last_pushed = payload
+    try:
+        env = dict(os.environ)
+        subprocess.run(["git", "-C", REPO_DIR, "add", "status.json"],
+                       check=True, capture_output=True, env=env, timeout=30)
+        subprocess.run(["git", "-C", REPO_DIR, "commit", "-m",
+                        "monitor: update status.json"],
+                       check=True, capture_output=True, env=env, timeout=30)
+        subprocess.run(["git", "-C", REPO_DIR, "push", "origin", "main"],
+                       check=True, capture_output=True, env=env, timeout=60)
+        print("[monitor] status.json synced to GitHub Pages")
+    except Exception as e:
+        # non-fatal: page display is secondary to on-chain detection
+        print(f"[monitor] sync skipped: {e}")
 
 def main():
     price = eth_price()
