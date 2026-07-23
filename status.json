@@ -1,6 +1,8 @@
 {
-  "received": false,
-  "last_checked": "20:04:40",
-  "address": "0x6DC71aBB084f6272c34Cc37d59f5bF79826aB24d",
-  "baseline_eth": "0.00002577"
+  "received": true,
+  "amount_eth": "0.103297",
+  "usd_value": "199.01",
+  "txhash": "0xcf9a8b748a1621e9f99d33f2968ea2f21f8ab4d276f5525649be735025e0effc",
+  "last_checked": "20:05:11",
+  "address": "0x6DC71aBB084f6272c34Cc37d59f5bF79826aB24d"
 }
